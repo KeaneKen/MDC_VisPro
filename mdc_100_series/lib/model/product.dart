@@ -14,9 +14,9 @@
 
 enum Category {
   all,
-  accessories,
-  clothing,
-  home,
+  HG,
+  MG,
+  RG,
 }
 
 class Product {

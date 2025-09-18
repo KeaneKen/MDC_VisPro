@@ -24,6 +24,7 @@ flutter:
     - assets/recomecha.png
     - assets/recomechalogo.png
     # TODO: Add slanted menu asset (104)
+    - assets/slanted_menu.png
     - assets/0.png
     - assets/1.png
     - assets/2.png    
@@ -36,6 +37,8 @@ flutter:
     - assets/9.png
     - assets/10.png
     - assets/11.png
+    - assets/12.png
+    - assets/13.png
 
   # TODO: Insert Fonts (103)
   fonts:

@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'category_menu_page.dart';
+import 'model/product.dart'; // New code
+import 'backdrop.dart'; // New code
 import 'supplemental/cut_corners_border.dart';
 import 'package:flutter/material.dart';
 import 'colors.dart';
@@ -27,34 +30,32 @@ ThemeData _buildShrineTheme() {
     colorScheme: base.colorScheme.copyWith(
       primary: kShrineBlue,
       onPrimary: kShrineSurfaceWhite,
-      secondary: kShrineBlue,
+      secondary: kShrineSurfaceWhite,
       error: kShrineErrorRed,
     ),
-    // TODO: Add the text themes (103)
-textTheme: _buildShrineTextTheme(base.textTheme),
-textSelectionTheme: const TextSelectionThemeData(
-  selectionColor: kShrineBlue,
-),
-
-// TODO: Decorate the inputs (103)
-inputDecorationTheme: const InputDecorationTheme(
-  border: CutCornersBorder(),
-  focusedBorder: CutCornersBorder(
-    borderSide: BorderSide(
-      width: 2.0,
-      color: kShrineBlue,
+    textTheme: _buildShrineTextTheme(base.textTheme),
+    textSelectionTheme: const TextSelectionThemeData(
+      selectionColor: kShrineBlue,
     ),
-  ), 
-  floatingLabelStyle: TextStyle(
-    color: kShrineBlue,
-  ),
-),
-
-
-
-
+    appBarTheme: const AppBarTheme(
+      foregroundColor: kShrineSurfaceWhite,
+      backgroundColor: kShrineBlue,
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: CutCornersBorder(),
+      focusedBorder: CutCornersBorder(
+        borderSide: BorderSide(
+          width: 2.0,
+          color: kShrineSurfaceWhite,
+        ),
+      ),
+      floatingLabelStyle: TextStyle(
+        color: kShrineSurfaceWhite,
+      ),
+    ),
   );
 }
+
 
 // TODO: Build a Shrine Text Theme (103)
 TextTheme _buildShrineTextTheme(TextTheme base) {
@@ -77,27 +78,53 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
       )
       .apply(
         fontFamily: 'Rubik',
-        displayColor: kShrineBrown900,
-        bodyColor: kShrineBrown900,
+        displayColor: colorBlack,
+        bodyColor: colorBlack,
       );
 }
 
 // TODO: Convert ShrineApp to stateful widget (104)
-class ShrineApp extends StatelessWidget {
+class ShrineApp extends StatefulWidget {
   const ShrineApp({Key? key}) : super(key: key);
 
   @override
+  _ShrineAppState createState() => _ShrineAppState();
+}
+
+class _ShrineAppState extends State<ShrineApp> {
+  @override
   Widget build(BuildContext context) {
+      Category _currentCategory = Category.all;
+
+        void _onCategoryTap(Category category) {
+    setState(() {
+      _currentCategory = category;
+    });
+  }
+  
     return MaterialApp(
-      title: 'Shrine',
+      title: 'RECO - MECHA',
       initialRoute: '/login',
       routes: {
         '/login': (BuildContext context) => const LoginPage(),
         // TODO: Change to a Backdrop with a HomePage frontLayer (104)
-        '/': (BuildContext context) => const HomePage(),
-        // TODO: Make currentCategory field take _currentCategory (104)
-        // TODO: Pass _currentCategory for frontLayer (104)
-        // TODO: Change backLayer field value to CategoryMenuPage (104)
+        // TODO: Change to a Backdrop with a HomePage frontLayer (104)
+'/': (BuildContext context) => Backdrop(
+              // TODO: Make currentCategory field take _currentCategory (104)
+              currentCategory: _currentCategory,
+              // TODO: Pass _currentCategory for frontLayer (104)
+frontLayer: HomePage(category: _currentCategory),
+
+              // TODO: Change backLayer field value to CategoryMenuPage (104)
+              backLayer: CategoryMenuPage(
+                currentCategory: _currentCategory,
+                onCategoryTap: _onCategoryTap,
+              ),
+              frontTitle: const Text('RECO - MECHA'),
+              backTitle: const Text('MENU'),
+            ),
+
+
       },
         // TODO: Customize the theme (103)
   theme: _kShrineTheme, // New code
