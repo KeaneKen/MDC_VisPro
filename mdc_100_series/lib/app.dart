@@ -12,10 +12,75 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'supplemental/cut_corners_border.dart';
 import 'package:flutter/material.dart';
-
+import 'colors.dart';
 import 'home.dart';
 import 'login.dart';
+
+// TODO: Build a Shrine Theme (103)
+final ThemeData _kShrineTheme = _buildShrineTheme();
+
+ThemeData _buildShrineTheme() {
+  final ThemeData base = ThemeData.light(useMaterial3: true);
+  return base.copyWith(
+    colorScheme: base.colorScheme.copyWith(
+      primary: kShrineBlue,
+      onPrimary: kShrineSurfaceWhite,
+      secondary: kShrineBlue,
+      error: kShrineErrorRed,
+    ),
+    // TODO: Add the text themes (103)
+textTheme: _buildShrineTextTheme(base.textTheme),
+textSelectionTheme: const TextSelectionThemeData(
+  selectionColor: kShrineBlue,
+),
+
+// TODO: Decorate the inputs (103)
+inputDecorationTheme: const InputDecorationTheme(
+  border: CutCornersBorder(),
+  focusedBorder: CutCornersBorder(
+    borderSide: BorderSide(
+      width: 2.0,
+      color: kShrineBlue,
+    ),
+  ), 
+  floatingLabelStyle: TextStyle(
+    color: kShrineBlue,
+  ),
+),
+
+
+
+
+  );
+}
+
+// TODO: Build a Shrine Text Theme (103)
+TextTheme _buildShrineTextTheme(TextTheme base) {
+  return base
+      .copyWith(
+        headlineSmall: base.headlineSmall!.copyWith(
+          fontWeight: FontWeight.w500,
+        ),
+        titleLarge: base.titleLarge!.copyWith(
+          fontSize: 18.0,
+        ),
+        bodySmall: base.bodySmall!.copyWith(
+          fontWeight: FontWeight.w400,
+          fontSize: 14.0,
+        ),
+        bodyLarge: base.bodyLarge!.copyWith(
+          fontWeight: FontWeight.w500,
+          fontSize: 16.0,
+        ),
+      )
+      .apply(
+        fontFamily: 'Rubik',
+        displayColor: kShrineBrown900,
+        bodyColor: kShrineBrown900,
+      );
+}
 
 // TODO: Convert ShrineApp to stateful widget (104)
 class ShrineApp extends StatelessWidget {
@@ -34,8 +99,9 @@ class ShrineApp extends StatelessWidget {
         // TODO: Pass _currentCategory for frontLayer (104)
         // TODO: Change backLayer field value to CategoryMenuPage (104)
       },
-      // TODO: Customize the theme (103)
-      theme: ThemeData.light(useMaterial3: true),
+        // TODO: Customize the theme (103)
+  theme: _kShrineTheme, // New code
+
     );
   }
 }

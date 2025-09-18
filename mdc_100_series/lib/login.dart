@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFFFFFF),
+      // backgroundColor: Theme.of(context).colorScheme.secondary,
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -46,7 +46,11 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Image.asset('assets/recomecha.png'),
                 const SizedBox(height: 16.0),
-                const Text('RECO-MECHA'),
+                Image.asset('assets/recomechalogo.png'),
+                Text(
+                  'Login',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                )
               ],
             ),
             const SizedBox(height: 120.0),
@@ -59,8 +63,6 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _usernameController,
               decoration: const InputDecoration(
-                filled: true,
-                fillColor: Color(0xADD8E6FF),
                 labelText: 'Username',
               ),
             ),
@@ -70,8 +72,6 @@ class _LoginPageState extends State<LoginPage> {
 TextField(
   controller: _passwordController,
   decoration: const InputDecoration(
-    filled: true,
-    fillColor: Color(0xADD8E6FF),
     labelText: 'Password',
   ),
   obscureText: true,
@@ -84,29 +84,41 @@ const SizedBox(height: 24.0),
 OverflowBar(
   alignment: MainAxisAlignment.end,
   children: <Widget>[
-    TextButton(
-      style: TextButton.styleFrom(
-        foregroundColor: Color(0xFF000000),
-        backgroundColor: Color(0x262626FF),
-      ),
-      child: const Text('CANCEL'),
-      onPressed: () {
-        // TODO: Clear the text fields (101)
+TextButton(
+  child: const Text('CANCEL'),
+  onPressed: () {
     _usernameController.clear();
     _passwordController.clear();
-      },
-    ),
+  },
+  style: TextButton.styleFrom(
+    foregroundColor: Theme.of(context).colorScheme.primary,
+    shape: const BeveledRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+  ),
+),
+),
+
+    const SizedBox(width: 8.0), // Add space between buttons
+
     ElevatedButton(
-            style: TextButton.styleFrom(
-        foregroundColor: Color(0xFF000000),
-        backgroundColor: Color(0x262626FF),
-      ),
       child: const Text('NEXT'),
+            style: ElevatedButton.styleFrom(
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        elevation: 8.0,
+            shape: const BeveledRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+    ),
+
+
+
+
+      ),
       onPressed: () {
         // TODO: Show the next page (101)
   Navigator.pop(context);
-
       },
+      
     ),
   ],
 ),
