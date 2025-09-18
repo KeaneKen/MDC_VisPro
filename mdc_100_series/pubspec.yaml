@@ -21,7 +21,7 @@ flutter:
   # TODO: Insert Fonts (103)
   uses-material-design: true
   assets:
-    - assets/diamond.png
+    - assets/recomecha.png
     # TODO: Add slanted menu asset (104)
     - packages/shrine_images/0-0.jpg
     - packages/shrine_images/1-0.jpg

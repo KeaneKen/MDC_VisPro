@@ -23,9 +23,20 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   // TODO: Add text editing controllers (101)
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFFFFFF),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -33,18 +44,71 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 80.0),
             Column(
               children: <Widget>[
-                Image.asset('assets/diamond.png'),
+                Image.asset('assets/recomecha.png'),
                 const SizedBox(height: 16.0),
-                const Text('SHRINE'),
+                const Text('RECO-MECHA'),
               ],
             ),
             const SizedBox(height: 120.0),
             // TODO: Remove filled: true values (103)
             // TODO: Add TextField widgets (101)
             // TODO: Add button bar (101)
+
+            // TODO: Add TextField widgets (101)
+            // [Name]
+            TextField(
+              controller: _usernameController,
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Color(0xADD8E6FF),
+                labelText: 'Username',
+              ),
+            ),
+            // spacer
+            const SizedBox(height: 12.0),
+           // [Password]
+TextField(
+  controller: _passwordController,
+  decoration: const InputDecoration(
+    filled: true,
+    fillColor: Color(0xADD8E6FF),
+    labelText: 'Password',
+  ),
+  obscureText: true,
+),
+
+// add space before buttons
+const SizedBox(height: 24.0),
+
+// [Buttons]
+OverflowBar(
+  alignment: MainAxisAlignment.end,
+  children: <Widget>[
+    TextButton(
+      child: const Text('CANCEL'),
+      onPressed: () {
+        // TODO: Clear the text fields (101)
+    _usernameController.clear();
+    _passwordController.clear();
+
+      },
+    ),
+    ElevatedButton(
+      child: const Text('NEXT'),
+      onPressed: () {
+        // TODO: Show the next page (101)
+  Navigator.pop(context);
+
+      },
+    ),
+  ],
+),
+
           ],
         ),
       ),
     );
   }
 }
+
+
