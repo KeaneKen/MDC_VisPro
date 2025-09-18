@@ -34,7 +34,7 @@ List<Card> _buildGridCards(BuildContext context) {
 
   final ThemeData theme = Theme.of(context);
   final NumberFormat formatter = NumberFormat.simpleCurrency(
-      locale: Localizations.localeOf(context).toString());
+      locale: 'id_ID', name: 'IDR', decimalDigits: 0);
 
   return products.map((product) {
     return Card(
