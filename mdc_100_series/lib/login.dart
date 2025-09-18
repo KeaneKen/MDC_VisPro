@@ -85,15 +85,22 @@ OverflowBar(
   alignment: MainAxisAlignment.end,
   children: <Widget>[
     TextButton(
+      style: TextButton.styleFrom(
+        foregroundColor: Color(0xFF000000),
+        backgroundColor: Color(0x262626FF),
+      ),
       child: const Text('CANCEL'),
       onPressed: () {
         // TODO: Clear the text fields (101)
     _usernameController.clear();
     _passwordController.clear();
-
       },
     ),
     ElevatedButton(
+            style: TextButton.styleFrom(
+        foregroundColor: Color(0xFF000000),
+        backgroundColor: Color(0x262626FF),
+      ),
       child: const Text('NEXT'),
       onPressed: () {
         // TODO: Show the next page (101)
