@@ -7,7 +7,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.17.0
+  intl: ^0.20.2
 
   cupertino_icons: ^1.0.5
   shrine_images: ^2.0.2
@@ -15,7 +15,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   # TODO: Insert Fonts (103)
@@ -39,6 +39,31 @@ flutter:
     - assets/11.png
     - assets/12.png
     - assets/13.png
+    - assets/14.png
+    - assets/15.png
+    - assets/16.png
+    - assets/17.png
+    - assets/18.png
+    - assets/19.png 
+    - assets/20.png
+    - assets/21.png
+    - assets/22.png
+    - assets/23.png
+    - assets/24.png
+    - assets/25.png
+    - assets/26.png
+    - assets/27.png
+    - assets/28.png
+    - assets/29.png
+    - assets/30.png 
+    - assets/31.png
+    - assets/32.png
+    - assets/33.png
+    - assets/34.png
+    - assets/35.png
+    - assets/36.png
+    - assets/37.png
+    - assets/38.png
 
   # TODO: Insert Fonts (103)
   fonts:
