@@ -46,11 +46,11 @@ ThemeData _buildShrineTheme() {
       focusedBorder: CutCornersBorder(
         borderSide: BorderSide(
           width: 2.0,
-          color: kShrineSurfaceWhite,
+          color: kShrineBlue,
         ),
       ),
       floatingLabelStyle: TextStyle(
-        color: kShrineSurfaceWhite,
+        color: kShrineBlue,
       ),
     ),
   );
