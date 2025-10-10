@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../model/product.dart';
@@ -40,37 +41,42 @@ class ProductCard extends StatelessWidget {
       fit: BoxFit.cover,
     );
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        AspectRatio(
-          aspectRatio: imageAspectRatio,
-          child: imageWidget,
-        ),
-        SizedBox(
-          height: kTextBoxHeight * MediaQuery.of(context).textScaleFactor,
-          width: 121.0,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                product.name,
-                style: theme.textTheme.labelLarge,
-                softWrap: false,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-              ),
-              const SizedBox(height: 4.0),
-              Text(
-                formatter.format(product.price),
-                style: theme.textTheme.bodySmall,
-              ),
-            ],
+    return GestureDetector(
+      onTap: () {
+        context.push('/product/${product.id}');
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          AspectRatio(
+            aspectRatio: imageAspectRatio,
+            child: imageWidget,
           ),
-        ),
-      ],
+          SizedBox(
+            height: kTextBoxHeight * MediaQuery.of(context).textScaleFactor,
+            width: 121.0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  product.name,
+                  style: theme.textTheme.labelLarge,
+                  softWrap: false,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
+                const SizedBox(height: 4.0),
+                Text(
+                  formatter.format(product.price),
+                  style: theme.textTheme.bodySmall,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

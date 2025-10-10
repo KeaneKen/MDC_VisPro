@@ -288,8 +288,26 @@ title: _BackdropTitle(
       ],
     );
     return Scaffold(
-      appBar: appBar,
-      // TODO: Return a LayoutBuilder widget (104)
+      appBar: appBar,  // Use the appBar variable you already created above
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+
+        },
+        items: const [  // All items go inside this list
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'About',
+          ),
+        ],
+      ),
       body: LayoutBuilder(builder: _buildStack),
     );
   }

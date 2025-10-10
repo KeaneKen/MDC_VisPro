@@ -298,5 +298,11 @@ class ProductsRepository {
         return p.category == category;
       }).toList();
     }
+    return allProducts;
+  }
+
+  // Add this new method
+  static Product loadProduct(int id) {
+    return loadProducts(Category.all).firstWhere((p) => p.id == id);
   }
 }

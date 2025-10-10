@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -22,7 +23,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // TODO: Add text editing controllers (101)
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -36,7 +36,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Theme.of(context).colorScheme.secondary,
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -54,75 +53,54 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             const SizedBox(height: 120.0),
-            // TODO: Remove filled: true values (103)
-            // TODO: Add TextField widgets (101)
-            // TODO: Add button bar (101)
-
-            // TODO: Add TextField widgets (101)
-            // [Name]
             TextField(
               controller: _usernameController,
               decoration: const InputDecoration(
                 labelText: 'Username',
               ),
             ),
-            // spacer
             const SizedBox(height: 12.0),
-           // [Password]
-TextField(
-  controller: _passwordController,
-  decoration: const InputDecoration(
-    labelText: 'Password',
-  ),
-  obscureText: true,
-),
-
-// add space before buttons
-const SizedBox(height: 24.0),
-
-// [Buttons]
-OverflowBar(
-  alignment: MainAxisAlignment.end,
-  children: <Widget>[
-TextButton(
-  child: const Text('CANCEL'),
-  onPressed: () {
-    _usernameController.clear();
-    _passwordController.clear();
-  },
-  style: TextButton.styleFrom(
-    foregroundColor: Theme.of(context).colorScheme.primary,
-    shape: const BeveledRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(7.0)),
-  ),
-),
-),
-
-    const SizedBox(width: 8.0), // Add space between buttons
-
-    ElevatedButton(
-      child: const Text('NEXT'),
-            style: ElevatedButton.styleFrom(
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        elevation: 8.0,
-            shape: const BeveledRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(7.0)),
-    ),
-
-
-
-
-      ),
-      onPressed: () {
-        // TODO: Show the next page (101)
-  Navigator.pop(context);
-      },
-      
-    ),
-  ],
-),
-
+            TextField(
+              controller: _passwordController,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+              ),
+              obscureText: true,
+            ),
+            const SizedBox(height: 24.0),
+            OverflowBar(
+              alignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(
+                  child: const Text('CANCEL'),
+                  onPressed: () {
+                    _usernameController.clear();
+                    _passwordController.clear();
+                  },
+                  style: TextButton.styleFrom(
+                    foregroundColor: Theme.of(context).colorScheme.primary,
+                    shape: const BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8.0),
+                ElevatedButton(
+                  child: const Text('NEXT'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    elevation: 8.0,
+                    shape: const BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                    ),
+                  ),
+                  onPressed: () {
+                    context.go('/');
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),

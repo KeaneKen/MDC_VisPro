@@ -13,7 +13,14 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'model/cart_repo.dart';
 
 import 'app.dart';
 
-void main() => runApp(const ShrineApp());
+void main() => runApp(
+      ChangeNotifierProvider(
+        create: (context) => CartRepo(),
+        child: const ShrineApp(),
+      ),
+    );
