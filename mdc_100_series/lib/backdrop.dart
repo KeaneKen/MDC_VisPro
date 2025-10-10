@@ -156,6 +156,7 @@ class _BackdropTitle extends AnimatedWidget {
 class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
+  int _selectedIndex = 0;
 
     // TODO: Add AnimationController widget (104)
   late AnimationController _controller;
@@ -201,6 +202,13 @@ class _BackdropState extends State<Backdrop>
         velocity: _frontLayerVisible ? -_kFlingVelocity : _kFlingVelocity);
   }
 
+  void _onBottomNavItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    // You can add navigation logic here based on the index
+    // For now, we'll just update the selected state
+  }
 
 
   // TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)
@@ -291,6 +299,31 @@ title: _BackdropTitle(
       appBar: appBar,
       // TODO: Return a LayoutBuilder widget (104)
       body: LayoutBuilder(builder: _buildStack),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onBottomNavItemTapped,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
+        unselectedItemColor: Colors.grey,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: 'Categories',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+      ),
     );
   }
 }
